@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>给组件绑定原生事件</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <child @click.native="handlerClick"></child>
+</div>
+<script>
+    Vue.component('Child', {
+        //1.使用emit触发外层事件
+        /*template: '<div @click="handlerClickChild">child</div>',
+        methods: {
+            handlerClickChild(){
+                alert('child click')
+                this.$emit('click')
+            }
+        }*/
+        //2.使用native触发原生事件
+        template: '<div>child</div>'
+    })
+    var vm = new Vue({
+        el: '#root',
+        data: {
+            message: 'helloworld'
+        },
+        methods: {
+            handlerClick() {
+                alert('click')
+            }
+        }
+    })
+</script>
+</body>
+</html>

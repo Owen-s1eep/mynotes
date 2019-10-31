@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin: 100px;
+            /*position: relative; 父级有定位，则子元素以此为基准点 */
+        }
+        .son{
+            width: 50px;
+            height: 50px;
+            background-color: skyblue;
+            position: absolute;/*如果父级没有定位，则会以docuemnt文档定位,并且脱离标准流，后面的元素会占有这个位置*/
+            top: 10px;
+            left: 10px;
+        }
+        .son2{
+            width: 50px;
+            height: 50px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+<div class="father">
+    <div class="son"></div>
+    <div class="son2"></div>
+</div>
+</body>
+</html>

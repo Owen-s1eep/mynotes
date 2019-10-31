@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 400px;
+            /*height: 400px; 父元素高度不设置，子元素浮动，脱离文档流后，父元素不会再撑开，因此下一个元素会占有位置，移动到元素下方*/
+            background-color: skyblue;
+            /*overflow: hidden; 2.触发bfc，可以清除浮动 ,为父级添加overflow属性 */
+        }
+
+        /*3.使用after伪类清除浮动*/
+        /*.clearfix:after {
+            display: block; !*转换为块级元素*!
+            content: '.';
+            height: 0;
+            visibility: hidden;
+            clear: both;
+        }*/
+        .clearfix {
+            *zoom: 1; /*ie 6,7清除浮动的方法*/
+        }
+
+        /*4.----*/
+        .clearfix:before,.clearfix:after{
+            content: '';
+            display: table;/*触发bfc*/
+        }
+        .clearfix:after{
+            clear: both;
+        }
+        /*4.----*/
+
+        .son1 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            float: left;
+        }
+
+        .son2 {
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+            float: left;
+        }
+
+        .next {
+            width: 100px;
+            height: 200px;
+            background-color: yellow;
+        }
+
+        .clear {
+            clear: both; /*清除浮动*/
+        }
+    </style>
+</head>
+<body>
+<div class="father clearfix">
+    <div class="son1"></div>
+    <div class="son2"></div>
+    <!--1.在浮动盒子的后面添加一个空盒子 w3c推荐方式，但会添加无意义的标签 很少使用 -->
+    <!--<div class="clear"></div>-->
+</div>
+<div class="next"></div>
+</body>
+</html>

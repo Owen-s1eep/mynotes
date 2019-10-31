@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue动态组件，v-once可以将静态组件做缓存，防止静态组件重复销毁及重建</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <compoent :is="type"></compoent>
+    <button @click="changeType">change</button>
+    <!--<child-one></child-one>
+    <child-two></child-two>-->
+</div>
+<script>
+    Vue.component('child-one', {
+        template: '<div v-once>child-one</div>'
+    })
+    Vue.component('child-two', {
+        template: '<div v-once>child-two</div>'
+    })
+    var vm = new Vue({
+        el: '#root',
+        data: {
+            type: 'child-one'
+        },
+        methods: {
+            changeType() {
+                this.type = this.type === 'child-one' ? 'child-two' : 'child-one'
+            }
+        }
+    })
+</script>
+</body>
+</html>

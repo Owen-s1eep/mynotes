@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            /*浮动脱离到标准流的上面，不占位置，不会超出内边距的范围,浮动的元素具有行内块的特性 span可以设置宽高了*/
+            float: left;
+            /*display: inline-block;*/
+        }
+        div:first-child{
+            background-color: pink;
+        }
+        div:nth-child(2){
+            background-color: yellow;
+        }
+        div:last-child{
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

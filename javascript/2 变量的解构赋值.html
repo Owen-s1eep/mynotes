@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        {
+            //1.解构赋值，左边和右边的模式相同，变量就会被赋予对应的值
+            let [a, b, c] = [1, 2, 3]
+            // console.log(a, b, c) //1,2,3
+        }
+        {
+            let [a, ...b] = [1, 2, 3, 4]
+            // console.log(a, b) //1 , [2, 3, 4]
+        }
+        {
+            //2.解构赋值允许赋值默认值
+            let [a, b = 1] = [3]
+            // console.log(a, b) //3,1
+        }
+        {
+            //3.赋值严格等于undefined ，才会赋值默认值
+            let [a = 1, b = 2] = [undefined, null]
+            // console.log(a, b)   //1,null
+        }
+        {
+            //4.对象的解构赋值,需要属性名称对应，才能解构
+            let {name, value} = {name: 'foo', value: 'bar'}
+            // console.log(name, value)    //foo,bar 和次序无关，没有匹配则返回undefined
+        }
+        {
+            //5.将对象的方法赋值到变量上
+            let {log} = console
+            // log('hello')    //hello
+        }
+        {
+            //6.对象解构默认值,解构给左面的value
+            let {a = 1} = {}
+            // console.log(a)
+            let {x: y = 3} = {x: 5}
+            // console.log(y) // y = 5
+        }
+        {
+            //7.特殊对象数组解构
+            let arr = [1, 2, 3];
+            let {0: first, [arr.length - 1]: last} = arr;
+            // console.log(first) // 1
+            // console.log(last) // 3
+        }
+        {
+            // 8.字符串的解构赋值
+            let [a, b, c, d] = 'qwer'
+            // console.log(a, b, c, d)
+            let {length} = 'qwer'
+            // console.log(length)
+        }
+        {
+            // 9.函数参数解构
+            function f({a = 0, b = 0}) {
+                return a + b
+            }
+
+            // console.log(f({a: 1, b: 2}))    //3
+            // console.log(f({a: 1})) //1
+            // console.log(f({})) //0
+        }
+        {
+            // 10.用途
+            // 1.交换变量
+            let x = 1;
+            let y = 2;
+            [x, y] = [y, x];
+            console.log(x, y); // 2 1
+
+            //2.解析返回值
+            /*function example() {
+                return {
+                    foo: 1,
+                    bar: 2
+                };
+            }
+            let { foo, bar } = example();*/
+
+            //3.函数参数定义解析
+            /*function f({x, y, z}) { ... }
+            f({z: 3, y: 2, x: 1});*/
+
+            //4.提取json数据
+            let jsonData = {
+                id: 42,
+                status: "OK",
+                data: [867, 5309]
+            };
+            let { id, status, data: number } = jsonData;
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

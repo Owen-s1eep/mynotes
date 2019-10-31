@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        /*相对定位，相对自己原来的位置进行偏移，并且不会脱离标准流
+          使用这个让盒子移动到想要的位置，而浮动是为了让多个块级元素一行显示
+        */
+        div:nth-child(2){
+            position:relative;
+            top: 100px;
+            left: 110px;
+        }
+    </style>
+</head>
+<body>
+    <div>123</div>
+    <div>123</div>
+    <div>123</div>
+</body>
+</html>

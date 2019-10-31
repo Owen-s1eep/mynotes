@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+        let obj = {5: [1, 2], 8: [3, 4], 11: [1, 1]}
+        console.log(obj)
+        //遍历对象
+        for (let key in obj) {
+            //获取key
+            // console.log(key)
+            //获取value
+            // console.log(obj[key])
+        }
+        //obj is not iterable
+        /*for(let o of obj){
+            console.log(o)
+        }*/
+
+        /*补足月份*/
+        let sourceKey = []
+        let date = new Date()
+        //当前月份
+        let month = date.getMonth() + 1
+        console.log(month)
+        for (let key in obj) {
+            key = key - 0
+            if (key > month) {
+                sourceKey.unshift(key)
+            } else {
+                sourceKey.push(key)
+            }
+        }
+        console.log(sourceKey)  //["11", "5", "8"]
+        let xValue = []
+        let yValue = new Array(12)
+        let maxMonth = sourceKey[sourceKey.length - 1]
+        for (let i = 0; i < 12; i++) {
+            if (maxMonth == 0) {
+                maxMonth = 12
+            }
+            xValue.unshift(maxMonth)
+            maxMonth--
+        }
+        //组织月份
+        console.log(xValue)
+        xValue.forEach((value, index) => {
+            if (sourceKey.indexOf(value) != -1) {
+                yValue[index] = obj[value]
+            } else {
+                yValue[index] = [0, 0]
+            }
+        })
+        console.log(yValue)
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

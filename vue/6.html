@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue过渡特效</title>
+    <script src="./vue.js"></script>
+    <link type="text/css" href="./animate.css" rel="stylesheet">
+</head>
+<body>
+<div id="root">
+    <transition name="fade" appear enter-active-class="animated fadeInDown"
+        leave-active-class="animated shake"
+        appear-active-class="animated fadeInDown">
+        <div v-show="flag">aaaa</div>
+    </transition>
+    <button @click="show">toggle</button>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#root',
+        data: {
+            flag: true
+        },
+        methods: {
+            show() {
+                this.flag = !this.flag
+            }
+        }
+    })
+</script>
+</body>
+</html>

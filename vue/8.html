@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue多个元素或者组件过渡</title>
+    <script src="./vue.js"></script>
+    <style>
+        .v-enter, .v-leave-to {
+            opacity: 0;
+        }
+        .v-enter-active, .v-leave-active {
+            transition: opacity 1s;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <transition mode="out-in">
+        <!--设置key值防止dom复用-->
+        <div v-if="show" key="key1">hello world</div>
+        <div v-else key="key2">vue</div>
+    </transition>
+    <button @click="show = !show">toggle</button>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#root',
+        data: {
+            show: true
+        }
+    })
+</script>
+</body>
+</html>

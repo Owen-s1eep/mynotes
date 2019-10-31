@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div:first-child{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            box-sizing: content-box;    /*w3c标准盒模型 和之前一样*/
+            padding: 10px;
+        }
+
+        div:last-child{
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+            padding: 10px;  /*padding不撑开盒子*/
+            box-sizing: border-box;
+            border: 10px solid red; /*border不撑开盒子*/
+        }
+    </style>
+</head>
+<body>
+    <div>content-box</div>
+    <div>border-box</div>
+</body>
+</html>

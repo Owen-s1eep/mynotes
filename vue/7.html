@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue css3动画</title>
+    <!--
+        显示添加样式：
+        初始化第一帧 fade-enter fade-enter-active
+        下一帧 fade-enter-to出现 fade-enter消失
+        最后 fade-enter-active 和 fade-enter-to消失
+        隐藏添加样式：
+        第一帧：fade-leave,fade-leave-active
+        第二帧：fade-leave消失，fade-leave-to
+        最后：fade-leave-active,fade-leave-to消失
+    -->
+    <script src="./vue.js"></script>
+    <style>
+        /*fade-enter初始化透明度为0，下一帧样式消失，透明度恢复1，使用3s时间进入*/
+        .fade-enter {
+            opacity: 0;
+        }
+        .fade-enter-active {
+            transition: opacity 3s;
+        }
+        /*第二帧出现此样式，让透明度为0，使用3s*/
+        .fade-leave-to {
+            opacity: 0;
+        }
+        .fade-leave-active {
+            transition: opacity 3s;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <transition name="fade">
+        <span v-show="flag">hello vue</span>
+    </transition>
+    <button @click="flag = !flag">toggle</button>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#root',
+        data: {
+            flag: true
+        },
+    })
+</script>
+</body>
+</html>

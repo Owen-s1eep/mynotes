@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: #fff;
+        }
+        /*垂直的外边距会合并为最大的一个，解决方案，设置某一个margin 为两者之和*/
+        div:first-child {
+            background-color: pink;
+            margin-bottom: 20px;
+        }
+
+        div:last-child {
+            background-color: purple;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+</body>
+</html>
