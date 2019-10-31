@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            height: 3000px;
+        }
+        .father{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            margin: 100px auto;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+            /*fixed定位始终定位在浏览器的某个位置，并且不会随着浏览器的滚动而滚动，只认浏览器
+                完全脱标，不占有位置
+            */
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son">fixed</div>
+    </div>
+</body>
+</html>

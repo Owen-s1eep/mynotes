@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .top{
+            width: 100%;/*固定定位一定要写宽高，除非有内容撑开*/
+            height: 44px;
+            background-color: #eeeeee;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .main{
+            width: 1002px;
+            height: 2000px;
+            margin: 44px auto;
+            background-color: #d9e0ee;
+        }
+        .left,.right{
+            width: 200px;
+            height: 300px;
+            position: fixed;
+            background-color: pink;
+            top: 200px;
+        }
+        .left{
+            left: 0;
+        }
+        .right{
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="top"></div>
+    <div class="main">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+    </div>
+    <div class="left">广告</div>
+    <div class="right">广告</div>
+</body>
+</html>

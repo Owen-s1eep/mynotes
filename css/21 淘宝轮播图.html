@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .outer {
+            width: 520px;
+            height: 280px;
+            margin: 100px auto;
+            position: relative;
+        }
+        .arrow-l,.arrow-r{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            display: block;
+            top: 50%;
+            margin-top: -25px;
+        }
+        .arrow-l{
+            left: 0;
+        }
+        .arrow-r{
+            right: 0;
+        }
+        a img{
+            filter:contrast(24%);
+        }
+        ul{
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li{
+            list-style: none;
+        }
+        .circle{
+            width: 70px;
+            height: 13px;
+            background-color: rgba(255,255,255,.3);
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            margin-left: -35px;
+            border-radius: 70px;
+        }
+        .circle li{
+            width: 8px;
+            height: 8px;
+            background-color: #fff;
+            float: left;
+            margin: 3px;
+            border-radius: 50%;
+        }
+        /*权重问题*/
+        .circle .active{
+            background-color: #ff5000;
+        }
+    </style>
+</head>
+<body>
+<div class="outer">
+    <img src="https://img.alicdn.com/simba/img/TB1kfNgklv0gK0jSZKbSuvK2FXa.jpg"/>
+    <a href="#" class="arrow-l"><img src="img/left.png" alt=""></a>
+    <a href="#" class="arrow-r"><img src="img/right.png" alt=""></a>
+    <ul class="circle">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+</html>

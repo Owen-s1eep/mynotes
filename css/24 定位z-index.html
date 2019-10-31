@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+
+        div:first-child {
+            background-color: pink;
+        }
+
+        div:nth-child(2) {
+            background-color: purple;
+            top: 30px;
+            left: 30px;
+            z-index: 1;
+        }
+
+        div:last-child {
+            background-color: skyblue;
+            top: 60px;
+            left: 60px;
+            /*默认属性是0，取值相同，按照书写顺序，后者覆盖前者，取值越大 越考上，*/
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>
