@@ -18,7 +18,7 @@
 
 - 远程仓库代码获得更新
 
-![1572794769013](https://github.com/wangwenjie666/mynotes/blob/master/1572794769013.png)
+![1572794769013](https://github.com/wangwenjie666/mynotes/blob/master/img/1572794769013.png)
 
 
 
