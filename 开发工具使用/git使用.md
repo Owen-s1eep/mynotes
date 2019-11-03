@@ -14,7 +14,7 @@
 
 - 然后进行同步：这里为推送，即将代码提交到远程仓库
 
-![1572794695894](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1572794695894.png)
+![1572794695894](https://github.com/wangwenjie666/mynotes/blob/master/img/1572794695894.png)
 
 - 远程仓库代码获得更新
 
@@ -26,7 +26,7 @@
 
 - 克隆两份代码
 
-![1572794885838](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1572794885838.png)
+![1572794885838](https://github.com/wangwenjie666/mynotes/blob/master/img/1572794885838.png)
 
 - 修改两份代码的同一个文件
 
@@ -34,13 +34,13 @@
 
 - 提交01 test文件，并且推送到远端仓库
 
-![1572795135526](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1572795135526.png)
+![1572795135526](https://github.com/wangwenjie666/mynotes/blob/master/img/1572795135526.png)
 
 ![1572795179740](https://github.com/wangwenjie666/mynotes/blob/master/img/1572795179740.png)
 
 - 确认远端仓库代码更新
 
-![1572795213646](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1572795213646.png)
+![1572795213646](https://github.com/wangwenjie666/mynotes/blob/master/img/1572795213646.png)
 
 - 在不获取最新代码时，source02代码提交
 
@@ -48,7 +48,7 @@
 
 - 推送至远端
 
-![1572795302689](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1572795302689.png)
+![1572795302689](https://github.com/wangwenjie666/mynotes/blob/master/img/1572795302689.png)
 
 - 会发现提交失败，所以要先拉取最新代码
 
@@ -56,7 +56,7 @@
 
 - 获取到的冲突
 
-![1572795513554](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1572795513554.png)
+![1572795513554](https://github.com/wangwenjie666/mynotes/blob/master/img/1572795513554.png)
 
 - 合并两个冲突，选中两行，优先使用其中之一
 
