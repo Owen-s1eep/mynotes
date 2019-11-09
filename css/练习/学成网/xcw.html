@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .clearfix:before, .clearfix:after {
+            display: table;
+            content: '';
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+        body {
+            background-color: #f3f5f7;
+        }
+
+        a {
+            color: #050505;
+            text-decoration: none;
+        }
+
+        input {
+            outline: 0;
+            border: 0;
+            box-sizing: border-box; /*border和padding值都会计算到盒子中，不会撑开*/
+        }
+
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            height: 100px;
+            overflow: hidden; /*嵌套外边距合并的问题*/
+        }
+
+        nav {
+            width: 1366px;
+            height: 42px;
+            margin: 26px auto;
+        }
+
+        .logo {
+             width: 192px;
+             height: 42px;
+             line-height: 42px;
+             float: left;
+             text-align: center;
+             font-size: 25px;
+             font-weight: 700;
+             color: skyblue;
+         }
+
+
+        .navbar {
+            margin-left: 52px;
+            float: left;
+            height: 42px;
+            line-height: 42px; /*行高可以继承*/
+        }
+
+        .navbar li {
+            float: left;
+        }
+
+        .navbar li a {
+            padding: 0 10px;
+            display: block; /*设置行内元素高度需要转为块级元素*/
+            height: 42px;
+        }
+
+        .navbar li a:hover {
+            border-bottom: 2px solid #00a4ff;
+        }
+
+        .search {
+            width: 410px;
+            height: 38px;
+            border: 1px solid #00a4ff;
+            float: right;
+        }
+
+        .search input[type=text] { /*属性选择器*/
+            width: 360px;
+            height: 38px;
+            padding-left: 20px;
+            float: left; /*解决缝隙问题*/
+        }
+
+        .search input[type=submit] {
+            width: 50px;
+            height: 38px;
+            float: left;
+            background: #00a4ff url(img/search.png) center center no-repeat;
+        }
+
+        .personal {
+            float: right;
+            height: 42px;
+            line-height: 42px;
+            margin: 0 15px 0 35px;
+        }
+
+        .personal img {
+            margin: 0 8px;
+        }
+
+        .banner {
+            height: 420px;
+            background-color: #1c036c;
+        }
+
+        .banner-in {
+            height: 420px;
+            position: relative;
+        }
+
+        .sliderbar {
+            height: 420px;
+            width: 190px;
+            background-color: rgba(0, 0, 0, .3);
+            float: left;
+        }
+
+        .sliderbar li a {
+            font-size: 14px;
+            color: #ffffff;
+            padding: 0 20px;
+            display: block;
+            line-height: 45px;
+        }
+
+        .sliderbar span {
+            float: right;
+            font-family: Arial;
+        }
+
+        .sliderbar a:hover {
+            color: #00a4ff;
+        }
+
+        .timetable {
+            float: right;
+            width: 230px;
+            height: 300px;
+            background-color: #fff;
+            margin-top: 50px;
+        }
+
+        .timetable dt {
+            height: 50px;
+            line-height: 50px;
+            background-color: #9bceea;
+            text-align: center;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .timetable dd {
+            width: 193px;
+            height: 60px;
+            margin: 0 auto;
+            border-bottom: 1px solid #ccc;
+            padding-top: 12px;
+            box-sizing: border-box;
+        }
+
+        .timetable dd h4 {
+            font-size: 16px;
+            font-weight: normal;
+            color: #4e4e4e;
+        }
+
+        .timetable dd p {
+            font-size: 14px;
+            color: #a5a5a5;
+        }
+
+        .timetable dd:last-child {
+            border: 0;
+        }
+
+        .timetable dd a {
+            height: 38px;
+            line-height: 38px;
+            border: 1px solid #00a4ff;
+            display: block;
+            color: #00a4ff;
+            font-weight: 700;
+            text-align: center;
+            transition: all .6s;
+        }
+
+        .timetable dd a:hover {
+            color: #fff;
+            background-color: #00a4ff;
+        }
+
+        .circle {
+            width: 180px;
+            height: 22px;
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            margin-left: -90px;
+            cursor: pointer;
+        }
+
+        .circle li {
+            width: 12px;
+            height: 12px;
+            margin: 6px 8px;
+            background-color: rgba(255, 255, 255, .2);
+            float: left;
+            border-radius: 50%;
+        }
+
+        .circle .current {
+            width: 19px;
+            border-radius: 8px;
+            background: #ffffff;
+        }
+
+        .recommond {
+            height: 60px;
+            line-height: 60px;
+            background-color: #fff;
+            margin-top: 8px;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, .4); /*水平距离，垂直距离，模糊距离，颜色*/
+        }
+
+        .recommond a {
+            padding: 0 30px;
+            border-right: 1px solid #cccccc;
+        }
+
+        .recommond a:hover {
+            color: #00a4ff;
+        }
+
+        .recommond a:first-child {
+            color: #00a4ff;
+            font-weight: 700;
+        }
+
+        .recommond a:last-child {
+            border: 0;
+            color: #00a4ff;
+            float: right;
+        }
+
+        .products {
+            margin-top: 35px;
+        }
+
+        .products-header {
+            height: 40px;
+        }
+
+        .products-header h4 {
+            float: left;
+            color: #494949;
+        }
+
+        .products-header a {
+            float: right;
+            margin-top: 10px;
+            margin-right: 30px;
+            font-size: 14px;
+            color: #a5a5a5;
+        }
+
+        .products-header a:hover {
+            color: #00a4ff;
+        }
+
+        .product-main ul li {
+            width: 228px;
+            height: 270px;
+            background-color: #fff;
+            overflow: hidden;
+            box-shadow: 0 4px 5px rgba(0, 0, 0, .4);
+            float: left;
+            margin-top: 15px;
+            margin-right: 15px;
+        }
+        .product-main ul li:nth-child(5n){
+            margin-right: 0;
+        }
+
+        .product-main li .icon {
+            width: 230px;
+            height: 150px;
+            background-color: forestgreen;
+        }
+
+        .product-main h5 {
+            font-weight: normal;
+            line-height: 22px;
+        }
+
+        .product-main h5, .product-main p {
+            margin-top: 12px;
+            padding: 0 20px 0 24px;
+        }
+
+        .product-main p {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .product-main p span {
+            color: #ff7c2d;
+        }
+        .footer{
+            height: 270px;
+            background-color: #fff;
+            margin-top: 100px;
+        }
+        .footer-wrapper{
+            padding-top: 30px;
+        }
+        .logo2 {
+            width: 192px;
+            height: 42px;
+            line-height: 42px;
+            text-align: center;
+            font-size: 25px;
+            font-weight: 700;
+            color: skyblue;
+        }
+        .footer-left{
+            float: left;
+            font-size: 12px;
+            color: #999;
+            line-height: 18px;
+        }
+        .footer-left p{
+            width: 500px;
+            margin-top: 20px;
+        }
+        .footer-left a{
+            width: 118px;
+            height: 33px;
+            display: block;
+            border: 1px solid #00a4ff;
+            margin-top: 15px;
+            font-size: 16px;
+            color: #00a4ff;
+            text-align: center;
+            line-height: 33px;
+        }
+        .footer_right{
+            color: #333;
+            float: right;
+        }
+        .footer_right dl{
+            padding-left: 100px;
+            box-sizing: border-box;
+            float: left;
+            width: 225px;
+        }
+        .footer_right dt{
+            font-size: 16px;
+            height: 30px;
+        }
+        .footer_right dd{
+            font-size: 12px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+<!--header-->
+<header>
+    <nav>
+        <div class="logo">学成在线</div>
+        <div class="navbar">
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">课程</a></li>
+                <li><a href="#">职业规划</a></li>
+            </ul>
+        </div>
+        <div class="personal">
+            <a href="#">个人中心<img src="img/ld.png" alt="" style="vertical-align: middle;"></a>
+            <a href="#"><img src="img/tou.png" alt="" style="vertical-align: middle">周杰伦</a>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="请输入关键词">
+            <input type="submit" value="">
+        </div>
+    </nav>
+</header>
+<!--banner-->
+<div class="banner">
+    <div class="banner-in container">
+        <div class="sliderbar">
+            <ul>
+                <li><a href="#">前端开发 <span>></span> </a></li>
+                <li><a href="#">前端开发 <span>></span> </a></li>
+                <li><a href="#">前端开发 <span>></span> </a></li>
+                <li><a href="#">前端开发 <span>></span> </a></li>
+                <li><a href="#">前端开发 <span>></span> </a></li>
+                <li><a href="#">前端开发 <span>></span> </a></li>
+                <li><a href="#">前端开发 <span>></span> </a></li>
+                <li><a href="#">前端开发 <span>></span> </a></li>
+                <li><a href="#">前端开发 <span>></span> </a></li>
+            </ul>
+        </div>
+        <dl class="timetable">
+            <dt>我的课程表</dt>
+            <dd>
+                <h4>继续学习 程序语言设计</h4>
+                <p>正在学习-使用对象</p>
+            </dd>
+            <dd>
+                <h4>继续学习 程序语言设计</h4>
+                <p>正在学习-使用对象</p>
+            </dd>
+            <dd>
+                <h4>继续学习 程序语言设计</h4>
+                <p>正在学习-使用对象</p>
+            </dd>
+            <dd>
+                <a href="#">全部课程</a>
+            </dd>
+        </dl>
+        <ul class="circle">
+            <li class="current"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<!--精品推荐-->
+<div class="recommond container">
+    <a href="#">精品推荐</a>
+    <a href="#">jQuery</a>
+    <a href="#">Java</a>
+    <a href="#">Vue.js</a>
+    <a href="#">Php</a>
+    <a href="#">JavaScript</a>
+    <a href="#">Spring Boot2</a>
+    <a href="#">Spring5</a>
+    <a href="#">修改兴趣</a>
+</div>
+<!--推荐模块-->
+<div class="products container">
+    <div class="products-header">
+        <h4>精品推荐</h4>
+        <a href="#">查看全部</a>
+    </div>
+    <div class="product-main clearfix">
+        <ul>
+            <li>
+                <div class="icon"></div>
+                <h5>Think php 5.0 博客系统实战演练</h5>
+                <p><span>高级</span> · 11245人正在学习</p>
+            </li>
+            <li>
+                <div class="icon"></div>
+                <h5>Think php 5.0 博客系统实战演练</h5>
+                <p><span>高级</span> · 11245人正在学习</p>
+            </li>
+            <li>
+                <div class="icon"></div>
+                <h5>Think php 5.0 博客系统实战演练</h5>
+                <p><span>高级</span> · 11245人正在学习</p>
+            </li>
+            <li>
+                <div class="icon"></div>
+                <h5>Think php 5.0 博客系统实战演练</h5>
+                <p><span>高级</span> · 11245人正在学习</p>
+            </li>
+            <li>
+                <div class="icon"></div>
+                <h5>Think php 5.0 博客系统实战演练</h5>
+                <p><span>高级</span> · 11245人正在学习</p>
+            </li>
+            <li>
+                <div class="icon"></div>
+                <h5>Think php 5.0 博客系统实战演练</h5>
+                <p><span>高级</span> · 11245人正在学习</p>
+            </li>
+            <li>
+                <div class="icon"></div>
+                <h5>Think php 5.0 博客系统实战演练</h5>
+                <p><span>高级</span> · 11245人正在学习</p>
+            </li>
+            <li>
+                <div class="icon"></div>
+                <h5>Think php 5.0 博客系统实战演练</h5>
+                <p><span>高级</span> · 11245人正在学习</p>
+            </li>
+            <li>
+                <div class="icon"></div>
+                <h5>Think php 5.0 博客系统实战演练</h5>
+                <p><span>高级</span> · 11245人正在学习</p>
+            </li>
+            <li>
+                <div class="icon"></div>
+                <h5>Think php 5.0 博客系统实战演练</h5>
+                <p><span>高级</span> · 11245人正在学习</p>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--底部-->
+<div class="footer">
+    <div class="container footer-wrapper">
+        <div class="footer-left">
+            <div class="logo2">学成在线</div>
+            <p>阿里妈妈MUX倾力打造的矢量图标管理、交流平台，设计师将图标上传到Iconfont平台，
+                用户可以自定义下载多种格式的icon，平台也可将图标转换为字体，便于前端工程师自由调整与调用。</p>
+            <a href="#">下载app</a>
+        </div>
+        <div class="footer_right">
+            <dl>
+                <dt>关于学成网</dt>
+                <dd><a href="#">关于</a></dd>
+                <dd><a href="#">管理团队</a></dd>
+                <dd><a href="#">工作机会</a></dd>
+                <dd><a href="#">客户服务</a></dd>
+                <dd><a href="#">帮助</a></dd>
+            </dl>
+            <dl>
+                <dt>关于学成网</dt>
+                <dd><a href="#">关于</a></dd>
+                <dd><a href="#">管理团队</a></dd>
+                <dd><a href="#">工作机会</a></dd>
+                <dd><a href="#">客户服务</a></dd>
+                <dd><a href="#">帮助</a></dd>
+            </dl>
+            <dl>
+                <dt>关于学成网</dt>
+                <dd><a href="#">关于</a></dd>
+                <dd><a href="#">管理团队</a></dd>
+                <dd><a href="#">工作机会</a></dd>
+                <dd><a href="#">客户服务</a></dd>
+                <dd><a href="#">帮助</a></dd>
+            </dl>
+        </div>
+    </div>
+</div>
+</body>
+</html>
