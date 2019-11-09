@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 120px;
+            height: 100px;
+            background-color: pink;
+            /*word-break: break-all;允许单词拆开*/
+            /*word-break: keep-all;默认显示，不能拆开，连字符 - 除外*/
+            /*white-space: normal; 默认换行*/
+            overflow: hidden;
+            white-space: nowrap;/*不换行*/
+            text-overflow: ellipsis;/*必须是一行显示才能使用，并且加上overflow属性，裁剪...*/
+            /*text-overflow: clip; 简单裁剪没有...*/
+        }
+    </style>
+
+</head>
+<body>
+<!--    <div>my name is h-ellocss</div>-->
+    <div>我呜呜呜呜呜呜呜呜无无无无无无无无无无无无无无无无无无无无无无无无无无无</div>
+</body>
+</html>

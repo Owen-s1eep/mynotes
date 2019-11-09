@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /*添加伪元素，默认添加了个类似块级元素的盒子一样*/
+        div::before{
+            content: '姓名：';
+        }
+        div::after{
+            content: '年龄：19';
+            display: block;
+            height: 100px;
+            width: 100px;
+            background-color: pink;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>张三</div>
+</body>
+</html>
