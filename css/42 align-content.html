@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        section{
+            width: 1000px;
+            height: 800px;
+            border: 1px solid #000000;
+            margin: 100px auto;
+            display: flex;/*伸缩布局*/
+            /*flex-wrap: wrap;*/
+            /*flex-direction: row;*/
+            flex-flow: row wrap;/*上面两个属性的简写*/
+            align-content: flex-start;/*必须设置flex-wrap和 row 和display=flex*/
+        }
+        div{
+            width: 250px;
+            height: 200px;
+        }
+        div:nth-child(1){
+            background-color: pink;
+        }
+        div:nth-child(2){
+            background-color: purple;
+        }
+        div:nth-child(3){
+            background-color: pink;
+        }
+        div:nth-child(4){
+            background-color: pink;
+            order: -1;/*order 越小 越靠前，越大越靠后， order默认为0*/
+        }
+        div:nth-child(5){
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+    </section>
+
+</body>
+</html>

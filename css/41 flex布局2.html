@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        section{
+            width: 1000px;
+            height: 800px;
+            border: 1px solid #000000;
+            margin: 100px auto;
+            display: flex;/*伸缩布局*/
+            /*justify-content: flex-end; 对齐方式*/
+            /*justify-content: center; 中间对齐*/
+            /*justify-content: space-between;中间缝隙 space-around包含两端缝隙*/
+            /*align-items: flex-end; 垂直对齐*/
+            /*align-items: center;*/
+            /*align-items: stretch;让子元素和父元素高度一样，拉伸，前提子元素不设置高度*/
+            flex-wrap: wrap;/*换行*/
+        }
+        div{
+            width: 250px;
+            height: 200px;
+        }
+        div:nth-child(1){
+            background-color: pink;
+        }
+        div:nth-child(2){
+            background-color: purple;
+        }
+        div:nth-child(3){
+            background-color: pink;
+        }
+        div:nth-child(4){
+            background-color: pink;
+        }
+        div:nth-child(5){
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+    </section>
+
+</body>
+</html>

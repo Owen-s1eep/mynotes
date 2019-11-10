@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            margin: 100px;
+            border-radius: 50%;
+            transition: all .5s;
+            /*旋转中心点，默认center center，可以使用像素*/
+            transform-origin: left top;
+        }
+        img:hover{
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+<img src="img/zjl.jpg" alt="" width="300" height="400">
+</body>
+</html>

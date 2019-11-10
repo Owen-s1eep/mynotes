@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        section{
+            width: 80%;
+            height: 200px;
+            border: 1px solid #000000;
+            margin: 100px auto;
+            display: flex;/*伸缩布局*/
+            /*flex-direction: row;!*横向排列*!*/
+            flex-direction: column;/*竖向排列*/
+        }
+        div{
+            flex: 1;/*份数*/
+            height: 100%;
+            margin: 0 5px;
+        }
+        div:nth-child(1){
+            background-color: pink;
+        }
+        div:nth-child(2){
+            background-color: purple;
+            margin: 0 5px;
+            flex: 2;
+        }
+        div:nth-child(3){
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div></div>
+        <div></div>
+        <div></div>
+    </section>
+
+</body>
+</html>

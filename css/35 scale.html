@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin: 100px auto;
+        }
+        div:hover{
+            transform: scale(2);/*水平，垂直，放大2倍 默认值为1 ，小于1即为缩小*/
+        }
+        section{
+            width: 450px;
+            height: 600px;
+            margin: 0 auto;
+            border : 1px solid red;
+            overflow: hidden;/*溢出隐藏*/
+            /*transition: all .5s;谁需要过渡，给谁添加过渡*/
+        }
+        section img{
+            transition: all .5s;
+        }
+
+        section:hover img{/*hover到section上时，让img 放大*/
+            transform: scale(1.2);
+        }
+        /*这种写法也可以*/
+        /*section img:hover{
+            transform: scale(1.5);
+        }*/
+    </style>
+</head>
+<body>
+    <div></div>
+    <section>
+        <img src="img/zjl.jpg" alt="" width="450" height="600">
+    </section>
+</body>
+</html>
