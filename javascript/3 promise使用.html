@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise</title>
+    <script>
+        {
+            /*
+            * Promise的三种状态值：
+            *   pending（进行中）、fulfilled（已成功）和rejected（已失败）。
+            * const p = Promise.all([p1,p2,p3])的参数可以不是数据，但是要实现Iterator接口,返回每个成员都是Promise实例
+            *   p的状态由p1,p2,p3共同决定，都变成fulfilled，p的状态才会变成fulfilled，有一个reject，p即为reject。
+            *
+            * Promise.allSettled()都返回结果，无论fulfilled或者reject，包装实例才会结束
+            * */
+
+        }
+        {
+            let promise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('123')
+                }, 1000)
+            })
+            promise.then(res => {
+                // console.log(res)
+            })
+            // console.log('hi')
+        }
+        {
+            /**
+             * promise1的状态决定了promise2
+             * @type {Promise<any>}
+             */
+            let promise1 = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    /*
+                        调用resolve活着reject并不会终结Promise的参数函数执行
+                        promise的resolve是在本轮事件循环末尾执行，
+                        一般来说应该是 return resolve，
+                     */
+                    resolve('promise1 执行完毕')
+                    // console.log('promise1 resolve后面执行')
+                }, 1000)
+            })
+            let promise2 = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(promise1)
+                }, 1000)
+            })
+            promise2
+                .then(res => {
+                    // console.log(res)
+                    // console.log('promise2')
+                })
+        }
+        {
+            /**
+             * 链式 .then
+             * @param url
+             * @returns {Promise<any>}
+             */
+            function doget(url) {
+                return new Promise((resolve, reject) => {
+                    resolve('response: ' + url)
+                })
+            }
+
+            doget('get1')
+                .then(res => {
+                    // console.log(res)
+                    return doget('get2')
+                })
+                .then(res => {
+                    // console.log(res)
+                })
+            /**
+             * 箭头函数单条可以省略 return 以及 {}，多条不可以
+             */
+            doget('get3')
+                .then(res => doget('get4'))
+                .then(res => console.log(res))
+        }
+        {
+            const someAsyncThing = function () {
+                return new Promise(function (resolve, reject) {
+                    // 下面一行会报错，因为x没有声明
+                    // resolve(x + 2);
+                });
+            };
+
+            someAsyncThing().then(function () {
+                // console.log('everything is great');
+            });
+
+            setTimeout(() => {
+                // console.log(123)
+            }, 2000);
+            // Uncaught (in promise) ReferenceError: x is not defined
+            // 123
+        }
+        {
+            // Promise.all()
+            const promise1 = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('request 1')
+                }, 2000)
+            })
+            const promise2 = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('request 2')
+                }, 2000)
+            })
+
+            Promise.all([promise1, promise2])
+                .then(([p1, p2]) => {
+                    // console.log(p1, p2)
+                    // console.log('all finish')
+                })
+        }
+        {
+            // Promise.race()
+            /**
+             * 与Promise.all类似，将多个promise包装实例，某个promise先返回的，就传给回调then，模拟超时。。
+             */
+            const promise1 = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('request 1')
+                }, 5000)
+            })
+            const promise2 = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('request 2')
+                    // reject(new Error('请求超时'))
+                }, 2000)
+            })
+            Promise.race([promise1, promise2])
+                .then(res => {
+                    // console.log(res)
+                })
+                .catch(err => {
+                    // console.log(err)
+                })
+        }
+        {
+            // Promise.resolve('foo') 将现有的对象转换为Promise对象
+            let promise1 = Promise.resolve('foo')
+            promise1
+                .then(res => {
+                    console.log(res)
+                    return Promise.resolve('再次resolve：' + res)  //实现链式调用
+                })
+                .then(res => {
+                    console.log(res)
+                })
+            //等价于
+            let promise2 = new Promise(resolve => resolve('doo'))
+            promise2
+                .then(res => {
+                    // console.log(res)
+                })
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
