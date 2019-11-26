@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        {
+            //集合set ，唯一值
+            const s = new Set();
+            [1, 2, 3, 3, 4, 4].forEach(value => {
+                s.add(value)
+            })
+            // console.log(s)
+        }
+        {
+            //set可使用数据参数来初始化
+            let s = new Set([1, 2, 3, 3, 4, 4]);
+            // console.log(s, s.size)
+        }
+        {
+            //add 添加 delete删除，clear清除所有元素，has 是否包含某个元素
+            let s = new Set([1]);
+            s.add(2);
+            // console.log(s); //Set(2) {1, 2}
+            // console.log(s.add(3))   //Set(3) {1, 2, 3}  返回set集合本身
+            const hasProperty = s.has(1);
+            // console.log(hasProperty);   //true
+            const deleteFlag = s.delete(1); //返回是否删除成功标志
+            // console.log(deleteFlag, s)  //true, Set(2) {2, 3}
+            s.clear();  //clear所有，无返回值
+            // console.log(s)  //Set(0) {}
+        }
+        {
+            //Array.from将set集合转换为array
+            let s = new Set([1, 2, 3, 4, 4]);
+            // console.log(s, typeof s)    //Set(4) {1, 2, 3, 4} "object"
+            const array = Array.from(s);
+            // console.log(array, typeof array)    //(4) [1, 2, 3, 4] "object"
+        }
+        {
+            //遍历顺序和插入顺序一致
+            //set 集合遍历 Set.keys,Set.values,Set.entries set键值是同一个值
+            const s = new Set([1, 2, 3, 4])
+            for (let key of s.keys()) {
+                // console.log(key)
+            }
+            for (let value of s.values()) {
+                // console.log(value)
+            }
+            for (let entry of s.entries()) {
+                // console.log(entry)
+            }
+            s.forEach((value, index) => {
+                // console.log(value, index)
+            })
+            //...扩展运算符内部使用for...of实现
+            const arr = [...s]
+            // console.log(arr)
+            //数组去重
+            let array = [1, 2, 3, 4, 4, 5, 5]
+            array = [...new Set(array)]
+            // console.log(array)
+        }
+        {
+            //map 添加元素Map.set, 获取元素 Map.get, 判断是否包含某个元素 Map.has,删除元素 Map.delete
+            const m = new Map()
+            m.set('name', 'zs')
+            m.set('age', 12)
+            // console.log(m)  //Map(2) {"name" => "zs", "age" => 12}
+            // console.log(m.get('name'))  //zs
+            // console.log(m.has('age'))   //true
+            // console.log(m.delete('age'), m) //true , Map(1) {"name" => "zs"}
+        }
+        {
+            //map初始化，接受一个数组，数组内部是key，value形式的键值对
+            const map = new Map([
+                ['name', 'zs'],
+                ['age', 12]
+            ]);
+            console.log(map);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

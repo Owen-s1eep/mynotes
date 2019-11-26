@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        {
+            /**
+             * async函数的await命令后面，可以是Promise对象和原始类型的值（数值，字符串，布尔值，会转换为Promise.resolve）
+             * async返回值是Promise对象，async可以看做是多个异步操作，包装成一个promise对象，而await就是then命令的语法糖
+             * @param ms
+             * @returns {Promise<any>}
+             */
+            function timeout(ms) {
+                return new Promise(resolve => {
+                    console.log('计时开始')
+                    setTimeout(resolve, ms)
+                })
+            }
+
+            async function asyncPrint(value, ms) {
+                await timeout(ms)
+                console.log(value)
+            }
+
+            // asyncPrint('hello world', 1000)
+        }
+        {
+            //上面例子改写
+            async function timeout(ms) {
+                await new Promise(resolve => {
+                    console.log('计时开始')
+                    setTimeout(resolve, ms)
+                })
+            }
+
+            async function print(value, ms) {
+                await timeout(ms)
+                console.log(value)
+            }
+
+            // print('hello ', 2000)
+        }
+        {
+            async function request() {
+                await new Promise(resolve => {
+                    setTimeout(() => {
+                        console.log(`request get data`)
+                        resolve()
+                    }, 1000)
+                })
+                console.log('all request finished')
+            }
+
+            // request()
+        }
+        {
+            // async内部return返回promise
+            async function f() {
+                return 'hello world'
+            }
+
+            f().then(res => {
+                // console.log(res)    //hello world
+            })
+        }
+        {
+            async function f() {
+                throw new Error('error')
+            }
+
+            f()
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(err => {
+                    console.log(err)    //error
+                })
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

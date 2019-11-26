@@ -8,10 +8,13 @@
             /*
             * Promise的三种状态值：
             *   pending（进行中）、fulfilled（已成功）和rejected（已失败）。
-            * const p = Promise.all([p1,p2,p3])的参数可以不是数据，但是要实现Iterator接口,返回每个成员都是Promise实例
+            * const p = Promise.all([p1,p2,p3])的参数可以不是数组，但是要实现Iterator接口,返回每个成员都是Promise实例
             *   p的状态由p1,p2,p3共同决定，都变成fulfilled，p的状态才会变成fulfilled，有一个reject，p即为reject。
             *
             * Promise.allSettled()都返回结果，无论fulfilled或者reject，包装实例才会结束
+            *
+            * Promise.prototype.catch方法是.then(null, rejection)
+            * 或.then(undefined, rejection)的别名，用于指定发生错误时的回调函数。
             * */
 
         }
@@ -78,7 +81,7 @@
              */
             doget('get3')
                 .then(res => doget('get4'))
-                .then(res => console.log(res))
+            // .then(res => console.log(res))
         }
         {
             const someAsyncThing = function () {
@@ -146,11 +149,19 @@
             let promise1 = Promise.resolve('foo')
             promise1
                 .then(res => {
-                    console.log(res)
+                    // console.log(res)
+                    throw new Error('error')
                     return Promise.resolve('再次resolve：' + res)  //实现链式调用
                 })
+                /*.catch(err=>{
+                    console.log(err)
+                    reject(err)
+                })*/
                 .then(res => {
-                    console.log(res)
+                    // console.log(res)
+                })
+                .catch(err => {
+                    // console.log(err)
                 })
             //等价于
             let promise2 = new Promise(resolve => resolve('doo'))
@@ -159,6 +170,35 @@
                     // console.log(res)
                 })
         }
+        {
+            //如果已经为resolve状态，再抛出异常是无效的
+            //catch
+            let promise = new Promise((resolve, reject) => {
+                resolve('aa')
+                throw new Error('error')    //抛出无效
+            })
+                .then(res => {
+                    // console.log(res)    //aa
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+        {
+            const p1 = Promise.resolve('foo')
+            const p2 = Promise.resolve('too')
+            p1.then(res => {
+                console.log(res)
+                return Promise.resolve(res) //foo
+            })
+                .then(res => {
+                    console.log(res)    //foo
+                    p2.then(res => {
+                        console.log(res)    //too
+                    })
+                })
+        }
+
     </script>
 </head>
 <body>
