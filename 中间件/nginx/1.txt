@@ -1,0 +1,80 @@
+本地nginx配置
+    server{
+        listen 5100;
+
+        #编码格式
+        charset utf-8;
+        #代理配置参数
+        proxy_connect_timeout 180;
+        proxy_send_timeout 180;
+        proxy_read_timeout 180;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarder-For $remote_addr;
+
+        location / {
+            proxy_pass http://localhost:8004;
+        }
+    }
+
+1.单纯host，即proxy_pass 只是http://host:port的形式
+    location / {
+        proxy_pass http://localhost:8004;
+    }
+    location /riskcontrol {
+        proxy_pass http://localhost:8004;
+    }
+    location /riskcontrol/ {
+        proxy_pass http://localhost:8004;
+    }
+
+    location匹配的完整路径直接传递给url，
+    请求路径    http://localhost:5100/riskcontrol/hello
+    匹配路径    http://localhost:8004/riskcontrol/hello
+
+2.url包含路径，哪怕路径包含 / 也算 ，如http://host:port/ 或者 http://host:port/api
+
+    包含路径时，将匹配 "后" 的路径传给url
+
+    location / {
+        proxy_pass http://localhost:8004/;
+    }
+    请求路径    http://localhost:5100/riskcontrol/hello
+        riskcontrol/hello 拼接到代理url后
+    匹配路径    http://localhost:8004/riskcontrol/hello
+
+    location /riskcontrol/ {
+        proxy_pass http://localhost:8004/riskcontrol/;
+    }
+    请求路径    http://localhost:5100/riskcontrol/hello
+        hello 拼接到代理url后
+    匹配路径    http://localhost:8004/riskcontrol/hello
+
+    location /riskcontrol {
+        proxy_pass http://localhost:8004/riskcontrol/;
+    }
+    请求路径    http://localhost:5100/riskcontrol/hello
+        /hello 拼接到代理url后
+    匹配路径    http://localhost:8004/riskcontrol/hello
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
