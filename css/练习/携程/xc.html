@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        body {
+            min-width: 320px;
+            max-width: 540px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        header{
+            width: 100%;
+            height: 100px;
+            background: url('https://dimg04.c-ctrip.com/images/zg091a0000018asvmF6BE.png') center no-repeat;
+            background-size: cover;
+        }
+        header img{
+            width: 100%;
+            height: 100%;
+        }
+        nav{
+            padding: 5px;
+        }
+        .row:first-child{
+            background-color: #ff697a;
+        }
+        .row:nth-child(2){
+            background-color: #3d98ff;
+        }
+        .row:last-child{
+            background-color: #44c522;
+        }
+        .row{
+            height: 90px;
+            width: 100%;
+            border-radius: 8px;
+            display: flex;
+            margin-bottom: 5px;
+        }
+        .row3{
+            flex: 1;
+            border: 1px solid #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .row3:first-child{
+            border: 0;
+        }
+        .row3 div{
+            flex: 1;
+            font-size: 16px;
+            color: #ffffff;
+            line-height: 45px;
+            text-shadow: 0 1px 2px rgba(0,0,0,.6);
+        }
+        .row div:first-child{
+            border-bottom: 1px solid #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    </header>
+    <nav>
+        <div class="row">
+            <div class="row3">酒店</div>
+            <div class="row3">
+                <div>海外酒店</div>
+                <div>特价酒店</div>
+            </div>
+            <div class="row3">
+                <div>团 购</div>
+                <div>民宿·客栈</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row3">机票</div>
+            <div class="row3">
+                <div>火车票</div>
+                <div>特价票</div>
+            </div>
+            <div class="row3">
+                <div>汽车票</div>
+                <div>专车·租车</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row3">旅游</div>
+            <div class="row3">
+                <div>目的地攻略</div>
+                <div>周边游</div>
+            </div>
+            <div class="row3">
+                <div>游轮旅行</div>
+                <div>定制旅行</div>
+            </div>
+        </div>
+        <!--<div class="row">
+            <div class="row3">
+                <div>目的地攻略</div>
+                <div>周边游</div>
+            </div>
+            <div class="row3">
+                <div>目的地攻略</div>
+                <div>周边游</div>
+            </div>
+            <div class="row3">
+                <div>游轮旅行</div>
+                <div>定制旅行</div>
+            </div>
+        </div>-->
+    </nav>
+</body>
+</html>
