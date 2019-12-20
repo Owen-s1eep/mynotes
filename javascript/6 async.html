@@ -69,18 +69,32 @@
         }
         {
             async function f() {
-                throw new Error('error')
+                // throw new Error('error')
             }
 
             f()
                 .then(res => {
-                    console.log(res)
+                    // console.log(res)
                 })
                 .catch(err => {
-                    console.log(err)    //error
+                    // console.log(err)    //error
                 })
         }
-
+        {
+            async function timeout() {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve('aaaa')
+                    }, 3000)
+                })
+            }
+            async function f() {
+                const _a = await timeout()
+                console.log(_a)
+                console.log('bbbb')
+            }
+            f()
+        }
     </script>
 </head>
 <body>

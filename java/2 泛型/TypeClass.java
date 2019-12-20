@@ -22,6 +22,10 @@ public class TypeClass {
 
     }
 
+    public <T>  T g1(T t){
+        return t;
+    }
+
     //泛型static方法，T指定类型
     public static <T> void g(T arr[], T t) {
 
